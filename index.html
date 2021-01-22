@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<style>
+    .red{
+        color: red;
+    }
+    /* HIDE RADIO */
+[type=radio] { 
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* IMAGE STYLES */
+[type=radio] + img {
+  cursor: pointer;
+}
+
+/* CHECKED STYLES */
+[type=radio]:checked + img {
+  outline: 2px solid #f00;
+}
+</style>
+</head>
+<body>
+    <div class="container" style="border: 2px solid gray; margin: 0 auto; margin-top: 20px;">
+        <h1 class="display-1">Test</h1>
+        <div  id="text"></div>
+        <form id = "status">
+            <label class="radio-inline">
+              <input type="radio" name="optradio" value="1" >
+              <img style="width: 30px;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Facebook_like_thumb.png/1196px-Facebook_like_thumb.png">
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="optradio" value="0" checked>
+              <img style="width: 30px;" src="https://toppng.com/uploads/preview/winston-traitel-realty-handshake-icon-transparent-11553402832edhvkndg4q.png">
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="optradio" value="-1">
+              <img style="width: 30px;" src="https://pngimg.com/uploads/dislike/dislike_PNG2.png">
+            </label>
+        </form>
+        <button class="btn btn-success" style="margin-bottom: 20px;" id="butnext" onclick="func()">Next</button>
+    </div>
+</body>
+
+<script>
+    (function(){
+        var elem = document.getElementById("text");
+        elem.innerHTML = "<p>Question 1<br> Я не уважаю людей, которые неразумно делятся своими секретами.</p>"
+        elem.classList.add("red")
+
+
+    })();
+    var count = 0;
+
+    function ratio(){
+        var radios = document.getElementsByName('optradio');
+
+        for (var i = 0, length = radios.length; i < length; i++) {
+            if (radios[i].checked) {
+                // do whatever you want with the checked radio
+                //alert(radios[i].value);
+                return radios[i].value;
+                // only one radio can be logically checked, don't check the rest
+                break;
+                }
+                }
+    }
+    var type1 = 0,
+        type2 = 0,
+        type3 = 0;
+    function func(){
+        count = count+1;
+        console.log(count);
+        
+
+        
+        if(count == 1){
+            var question = "<p>Question 2 <br> Я часто не доверяю другим людям, даже когда в этом нет причины.</p>";
+            var Q1 = ratio();
+            type1 = type1+parseInt(Q1);
+            console.log(Q1);
+            console.log("question 1"); 
+        }if(count == 2){
+            question = "<p>Question 3 <br> Я постоянно проверяю свою вторую половинку, друзей и родственников на верность.</p>";
+            var Q2 = ratio();
+            type2 = type2+parseInt(Q2);
+            console.log(Q2);
+            console.log("question 2");
+        }if(count == 3){
+            question = "<p>Question 4 <br> Люди слушаются меня, потому что они меня боятся.</p>";
+            var Q3 = ratio();
+            type1 = type1+parseInt(Q3);
+            console.log(Q3);
+            console.log("question 3");
+        }if(count == 4){
+            question = "<p>Question 5 <br> Мне нравится управлять другими.</p>";
+            var Q4 = ratio();
+            type3 = type3+parseInt(Q4);
+            console.log("question 4");
+        }if(count == 5){
+            question = "<p>Question 6 <br> Люди намеренно пытаются разозлить меня.</p>";
+            var Q5 = ratio();
+            type3 = type3+parseInt(Q5);
+            console.log("question 5");
+        }if(count == 6){
+            question = "<p>Question 7 <br> Я избегаю конфликтов с людьми, которые могут понадобиться мне в будущем.</p>";
+            var Q6 = ratio();
+            type2 = type2+parseInt(Q6);
+            console.log("question 6");
+        }if(count == 7){
+            question = "<p>Question 8 <br> Иногда я попадаю в опасные ситуации.</p>";
+            var Q7 = ratio();
+            type1 = type1+parseInt(Q7);
+            console.log("question 7");
+        }if(count == 8){
+            question = "<p>Question 9 <br> Я помогаю людям, только если я получаю от этого выгоду.</p>";
+            var Q8 = ratio();
+            type3 = type3+parseInt(Q8);
+            console.log("question 8");
+        }if(count == 9){
+            question = "<p>Question 10 <br> Меня не волнует, оскорбляю ли я других людей.</p>";
+            var Q9 = ratio();
+            type1 = type1+parseInt(Q9);
+            console.log("question 9");
+        }if(count == 10){
+            question = "<p>Question 11 <br> Людей, которые меня не слушаются, надо проучать.</p>";
+            var Q10 = ratio();
+            type2 = type2+parseInt(Q10);
+            console.log("question 10");
+        }if(count == 11){
+            question = "<p>Question 12 <br> Большинство людей ленивы и не будут тяжело работать, если в этом нет необходимости.</p>";
+            var Q11 = ratio();
+            type1 = type1+parseInt(Q11);
+            console.log("question 11");
+        }if(count == 12){
+            question = "<p>Question 13 <br> Я считаю себя особенным человеком.</p>";
+            var Q12 = ratio();
+            type3 = type3+parseInt(Q12);
+            console.log("question 12");
+        }if(count == 13){
+            question = "<p>Question 14 <br> В общем я лучше других.</p>";
+            var Q13 = ratio();
+            type2 = type2+parseInt(Q13);
+            console.log("question 13");
+        }if(count == 14){
+            question = "<p>Question 15 <br> Другие считают мой образ жизни бурным и увлекательным.</p>";
+            var Q14 = ratio();
+            type1 = type1+parseInt(Q14);
+            console.log("question 14");
+        }if(count == 15){
+            var Q15 = ratio();
+            type2 = type2+parseInt(Q15);
+
+            console.log(type1);
+            console.log(type2);
+            console.log(type3);
+
+
+            var butNex = document.getElementById("butnext");
+            var newEl = document.createElement('p');
+            var res = '<h5>Ваш результат:</h5><br>';
+            var typeText1 = '<b>Жестокость:</b>' + String(type1);
+            var typeText2 = '<br><b>Недоверие:</b>' + String(type2);
+            var typeText3 = '<br><b>Манипулятивность:</b>' + String(type3) + '<br>';
+            newEl.innerHTML = res + typeText1 + typeText2 + typeText3;
+            butNex.parentNode.replaceChild(newEl, butNex);
+            var status = document.getElementById("status");
+            status.parentNode.removeChild(status);
+            var elem = document.getElementById("text");
+            elem.parentNode.removeChild(elem);
+                    
+        }
+        if(count<15){
+        var elem = document.getElementById("text");
+                elem.innerHTML = question;
+    }}
+</script>
+
+</html>
